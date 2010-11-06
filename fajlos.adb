@@ -19,19 +19,39 @@ type direntry (ft: file_type:=directory) is record
      end case;
 end record;
 
---
---typeofentry: string(1..100);
---sizeofentry: Natural;
---nameofentry: string(1..100);
---permofentry: string(1..100);
---moddateofentry: string(1..100);
---
-
 type direntrys is array (positive range <>) of direntry;
---detry: direntry;
+----------------------------------------------------------------------------
+
+function has_next (i:integer; array_of_entrys:direntrys) return boolean is
+
+begin
+
+     return i <= array_of_entrys'last;
+
+end has_next;
+
+----
+
+procedure next (i:in out integer; array_of_entrys:in direntrys) is 
+
+begin
+
+Text_io.put(array_of_entrys(i).perm(array_of_entrys(i).perm_l) & array_of_entrys(i).name(array_of_entrys(i).name_l) &
+array_of_entrys(i).moddate(array_of_entrys(i).moddate_l));
+if array_of_entrys(i).ft = file
+then
+     Text_io.put_line(integer'image(array_of_entrys(i).size));
+
+end if;
+i:=i+1;
+
+
+end next;
+
+
+
+----------------------------------------------------------------------------
 number_of_entrys:integer;
---str:string(1..100);
---utolso: integer;
 
 
 begin
@@ -63,39 +83,31 @@ begin
                declare
                     ent: direntry(file_type_of_entry);
                begin
-                    Text_io.put("Adjuk meg a bejegyzes nevet: ");
+                    --feltoltjuk a tomb egy elemet
+                    Text_io.put("Adjuk meg a bejegyzes nevet /string/: ");
                     Text_io.get_line(ent.name,ent.name_l);
-                    Text_io.put("Adjuk meg a bejegyzes utolso modositasanak datumat: ");
+                    Text_io.put("Adjuk meg a bejegyzes utolso modositasanak datumat /string/: ");
                     Text_io.get_line(ent.moddate,ent.moddate_l);
-                    Text_io.put("Adjuk meg a bejegyzes jogosultsagait: ");
+                    Text_io.put("Adjuk meg a bejegyzes jogosultsagait /string/: ");
                     Text_io.get_line(ent.perm,ent.perm_l);
                     if entry_type = 1
                     then
-                         Text_io.put("Adjuk meg a fajl meretet: ");
+                         Text_io.put("Adjuk meg a fajl meretet /natural/: ");
                          ada.integer_text_io.get(ent.size);
                          Text_io.skip_line;
                     end if;
                     
                     array_of_entrys(i):=ent;                   
-                    --Text_io.put_line(array_of_entrys(i).name(1..array_of_entrys(i).name_l));
-
-
-               end;
-               
-               
-               
+                    --Text_io.put_line(array_of_entrys(i).name(1..array_of_entrys(i).name_l));                   
+               end;               
           end loop;
-
-
+          
+           
+          
+          
+          
+     --eddig letezett az array_of_entrys
      end; 
-
-
-
-
-
-
-
-
 --xt_io.skip_line;
 --Text_io.get_line(detry.name, detry.name_l);
 --Text_io.put_line(detry.name(1..detry.name_l));
