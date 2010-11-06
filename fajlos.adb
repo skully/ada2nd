@@ -1,4 +1,4 @@
-with Text_io,ada.integer_text_io;
+with Text_io,ada.integer_text_io, Ada.Characters.Latin_1;
 
 
 procedure fajlos is
@@ -36,14 +36,17 @@ procedure next (i:in out integer; array_of_entrys:in direntrys) is
 
 begin
 
-Text_io.put(array_of_entrys(i).perm(array_of_entrys(i).perm_l) & array_of_entrys(i).name(array_of_entrys(i).name_l) &
-array_of_entrys(i).moddate(array_of_entrys(i).moddate_l));
-if array_of_entrys(i).ft = file
-then
-     Text_io.put_line(integer'image(array_of_entrys(i).size));
 
-end if;
-i:=i+1;
+     Text_io.put(array_of_entrys(i).perm(1..array_of_entrys(i).perm_l) & Ada.Characters.Latin_1.HT);
+
+     Text_io.put(array_of_entrys(i).moddate(1..array_of_entrys(i).moddate_l) & Ada.Characters.Latin_1.HT & array_of_entrys(i).name(1..array_of_entrys(i).name_l) & Ada.Characters.Latin_1.HT) ;
+     if array_of_entrys(i).ft = file
+     then
+          Text_io.put(integer'image(array_of_entrys(i).size));
+
+     end if;
+     Text_io.new_line;
+     i:=i+1;
 
 
 end next;
@@ -102,8 +105,24 @@ begin
                end;               
           end loop;
           
-           
-          
+          declare
+          i : integer := 1;
+          begin
+               Text_io.new_line;
+               Text_io.new_line;
+               Text_io.new_line;
+
+
+
+
+               Text_io.put_line("Jogosultsag" & ada.Characters.Latin_1.HT &"Modositas"& ada.Characters.Latin_1.HT & "Nev" &
+               ada.Characters.Latin_1.HT & "Meret");
+               Text_io.put_line("---------------------------------------------------");
+               while has_next(i,array_of_entrys)
+               loop
+                    next(i, array_of_entrys);
+               end loop;
+          end;
           
           
      --eddig letezett az array_of_entrys
