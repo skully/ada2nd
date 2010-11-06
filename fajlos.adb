@@ -3,58 +3,7 @@ use iterator;
 
 
 procedure fajlos is
---
---type file_type is (file, directory);
---
---
---type direntry (ft: file_type:=directory) is record
---     name: string(1..100);
---     name_l:integer;
---     moddate : string(1..100);
---     moddate_l:integer;
---     perm: String(1..100);
---     perm_l:integer;
---     case ft is
---          when file => size:Natural;
---          when directory=> null;
---     end case;
---end record;
---
---type direntrys is array (positive range <>) of direntry;
-------------------------------------------------------------------------------
---
---function has_next (i:integer; array_of_entrys:direntrys) return boolean is
---
---begin
---
---     return i <= array_of_entrys'last;
---
---end has_next;
---
-------
---
---procedure next (i:in out integer; array_of_entrys:in direntrys) is 
---
---begin
---
---
---     Text_io.put(array_of_entrys(i).perm(1..array_of_entrys(i).perm_l) & Ada.Characters.Latin_1.HT);
---
---     Text_io.put(array_of_entrys(i).moddate(1..array_of_entrys(i).moddate_l) & Ada.Characters.Latin_1.HT & array_of_entrys(i).name(1..array_of_entrys(i).name_l) & Ada.Characters.Latin_1.HT) ;
---     if array_of_entrys(i).ft = file
---     then
---          Text_io.put(integer'image(array_of_entrys(i).size));
---
---     end if;
---     Text_io.new_line;
---     i:=i+1;
---
---
---end next;
---
 
-
-----------------------------------------------------------------------------
 number_of_entrys:integer;
 
 
@@ -102,7 +51,6 @@ begin
                     end if;
                     
                     array_of_entrys(i):=ent;                   
-                    --Text_io.put_line(array_of_entrys(i).name(1..array_of_entrys(i).name_l));                   
                end;               
           end loop;
           
@@ -128,9 +76,6 @@ begin
           
      --eddig letezett az array_of_entrys
      end; 
---xt_io.skip_line;
---Text_io.get_line(detry.name, detry.name_l);
---Text_io.put_line(detry.name(1..detry.name_l));
 
 
 end fajlos;
