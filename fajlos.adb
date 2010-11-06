@@ -55,7 +55,7 @@ begin
           end loop;
           
           declare
-          i : integer := 1;
+          i : integer := array_of_entrys'first;
           begin
                Text_io.new_line;
                Text_io.new_line;
@@ -69,6 +69,17 @@ begin
                Text_io.put_line("---------------------------------------------------");
                while has_next(i,array_of_entrys)
                loop
+                    
+                    Text_io.put(array_of_entrys(i).perm(1..array_of_entrys(i).perm_l) & Ada.Characters.Latin_1.HT);
+
+                    Text_io.put(array_of_entrys(i).moddate(1..array_of_entrys(i).moddate_l) & Ada.Characters.Latin_1.HT & array_of_entrys(i).name(1..array_of_entrys(i).name_l) & Ada.Characters.Latin_1.HT) ;
+                    if array_of_entrys(i).ft = file
+                    then
+                         Text_io.put(integer'image(array_of_entrys(i).size));
+
+                    end if;
+                    Text_io.new_line;
+
                     next(i, array_of_entrys);
                end loop;
           end;
