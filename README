@@ -1,0 +1,21 @@
+2010. ősz, Ada beadandók
+1. feladat
+
+Leírás: Készítsen egy programot, amely segítségével el lehet tárolni a fájlrendszer aktuális könyvtárában lévő bejegyzéseket
+(fájlok, könyvtárak adatait). Az adatokat a program futása során billentyűzetről lehessen bevinni. A megvalósításhoz az alábbi
+adatszerkezeteket kell felhasználni.
+
+Adott egy tömb, melyben variáns rekordokat tárolunk. A rekord diszkriminánsa egy felsorolásos típust vár (Type File_Type is (File,
+Directory); Vigyázz, a File_Type foglalt típusnév!).
+
+Record tartalma:
+
+Név              : String(1..100);
+Hozzáférés_ideje : String(1..100);
+Méret            : Natural; -- csak fájlok esetén
+Jogosultság      : String(1..100); -- vagy Felsorolásos típus.
+
+
+Kell egy iterátor, mely: hasNext, next metódusokat tartalmaz, és a könyvtár listázására használjuk.
+
+A fenti követelményeken felül egy tesztprogram is kell készíteni, amely bemutatja a program működését.
