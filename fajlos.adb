@@ -65,14 +65,11 @@ begin
 
 
                Text_io.put_line("Jogosultsag" & ada.Characters.Latin_1.HT &"Modositas"& ada.Characters.Latin_1.HT & "Nev" &
-               ada.Characters.Latin_1.HT & "Meret");
-               Text_io.put_line("---------------------------------------------------");
-               while has_next(i,array_of_entrys)
-               loop
-                    next(i, array_of_entrys);
-               end loop;
+               ada.Characters.Latin_1.HT &   ada.Characters.Latin_1.HT & "Meret");
+               Text_io.put_line("-----------------------------------------------------");
+               iteration(i, array_of_entrys);
           end;
-          
+              
           
      --eddig letezett az array_of_entrys
      end; 

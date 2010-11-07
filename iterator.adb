@@ -13,11 +13,20 @@ begin
 end has_next;
 
 
-----next: puts the next element to std out.
+----next: mext element
 procedure next (i:in out integer; array_of_entrys:in direntrys) is
 
+begin            
+    i:=i+1;
+
+
+end next;
+----iteration: puts the next element to the std out
+procedure iteration (i:in out integer; array_of_entrys:in direntrys) is
+
 begin
-                    
+     while (has_next(i,array_of_entrys))
+     loop
                     ada.Text_io.put(array_of_entrys(i).perm(1..array_of_entrys(i).perm_l) & Ada.Characters.Latin_1.HT);
 
                     ada.Text_io.put(array_of_entrys(i).moddate(1..array_of_entrys(i).moddate_l) & Ada.Characters.Latin_1.HT & array_of_entrys(i).name(1..array_of_entrys(i).name_l) & Ada.Characters.Latin_1.HT) ;
@@ -29,10 +38,13 @@ begin
                     ada.Text_io.new_line;
 
 
-    i:=i+1;
+     
+               next(i, array_of_entrys); 
+     end loop;
+end iteration;
 
 
-end next;
+
 
 
 

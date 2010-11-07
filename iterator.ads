@@ -20,5 +20,5 @@ type direntrys is array (positive range <>) of direntry;
 
 function has_next (i:integer; array_of_entrys:direntrys) return boolean ;
 procedure next (i:in out integer; array_of_entrys:in direntrys);
-
+procedure iteration (i:in out integer; array_of_entrys:in direntrys);
 end iterator;
